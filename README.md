@@ -175,3 +175,50 @@ Example: curl -s -H 'x-api-key: xxxxxxxxxxxxx' "https://exercise.trunarrative.cl
 ## Flow
 
 ![Wireframe](https://raw.githubusercontent.com/TruNarrative/spring-exercise/main/spring_exercise.png)
+
+
+
+
+
+**Technical Document for Company-Search-Service Microservice Application**
+
+### 1. Introduction
+The Company-Search-Service is a microservice application developed using Spring Boot 3, Java 17, MongoDB, Ehcache, Model Mapper, Docker, and Maven. It provides a RESTful API for searching company details based on company name or number, with additional flags to fetch active companies, active officers, and the latest data from the TruProxy API.
+
+### 2. Technologies Used
+- **Spring Boot 3**: Provides a robust framework for building microservices with minimal configuration.
+- **Java 17**: The latest version of Java for enhanced performance and features.
+- **MongoDB**: A NoSQL database used for persisting and retrieving company data.
+- **Ehcache**: A distributed in-memory cache for improving application performance by storing frequently accessed data.
+- **Model Mapper**: Used for mapping between DTOs (Data Transfer Objects) and entity objects.
+- **Docker**: Containerization platform for packaging the application and its dependencies into containers.
+- **Maven**: Build automation tool for managing dependencies and building the project.
+
+### 3. Functionality
+- **Search by Company Name or Number**: Users can search for company details using either the company name or number.
+- **Flags for Additional Data**: Additional flags can be provided to fetch active companies, active officers, and the latest data from the TruProxy API.
+- **Caching with Ehcache**: Data fetched from external sources is cached in Ehcache to improve performance.
+- **Persistence with MongoDB**: Fetched data is persisted in MongoDB for future retrieval.
+- **RESTful API**: Provides a RESTful API with endpoints supporting both XML and JSON formats.
+- **Error Handling**: Proper HTTP status codes and error messages are returned for various scenarios to ensure a good user experience.
+   - 200: Success with company details.
+   - 404: Company details not found.
+   - 400: Bad request.
+
+### 4. Good Coding Practices
+- **SOLID Principles**: The application is designed following SOLID principles to ensure maintainability, scalability, and testability.
+- **AOP for App Health Check**: Aspect-Oriented Programming (AOP) is used for implementing health checks to monitor the application's health and performance.
+- **REST Design Principles**: Follows RESTful design principles for designing clean, intuitive, and predictable APIs.
+
+### 5. Advantage of MongoDB over SQL
+- **Schema Flexibility**: MongoDB's schema-less nature allows for easy storage and retrieval of unstructured data, making it suitable for storing dynamic and evolving data like company details.
+- **Horizontal Scalability**: MongoDB's distributed architecture enables horizontal scalability, allowing the application to handle large volumes of data and traffic efficiently.
+- **Document-Oriented**: MongoDB stores data in flexible JSON-like documents, eliminating the need for complex joins and facilitating faster query execution.
+
+### 6. Usage of Ehcache
+- **Improved Performance**: Ehcache provides in-memory caching, reducing the need for frequent database queries and improving response times.
+- **Reduced Latency**: Cached data is readily available in memory, resulting in reduced latency and improved application performance.
+- **Cost-Effective Scalability**: Caching reduces the load on backend systems, enabling cost-effective scalability by reducing the need for additional infrastructure.
+
+### Conclusion
+The Company-Search-Service microservice application leverages modern technologies like Spring Boot, MongoDB, Ehcache, and Docker to provide efficient and scalable search functionality for company details. By adhering to good coding practices and leveraging the advantages of NoSQL databases and caching mechanisms, the application ensures optimal performance and reliability for users.
