@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: company-search-service
+
+  profiles:
+    active:
+      - dev
+
+  cache:
+    jcache:
+      config: classpath:ehcache.xml
+
+server:
+  port: 8080
+  servlet:
+    contextPath: /api/search
+
+
+
+management:
+  endpoint:
+    info:
+      enabled: true
+      cache:
+        time-to-live: 10s
+    health:
+      enabled: true
+    loggers:
+      enabled: true
+    web:
+      exposure:
+        include: true

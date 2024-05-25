@@ -1,0 +1,9 @@
+
+search:
+  company: https://exercise.trunarrative.cloud/TruProxyAPI/rest/Companies/v1
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/search
+
