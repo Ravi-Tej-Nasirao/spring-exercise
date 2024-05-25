@@ -201,9 +201,15 @@ The Company-Search-Service is a microservice application developed using Spring 
 - **Persistence with MongoDB**: Fetched data is persisted in MongoDB for future retrieval.
 - **RESTful API**: Provides a RESTful API with endpoints supporting both XML and JSON formats.
 - **Error Handling**: Proper HTTP status codes and error messages are returned for various scenarios to ensure a good user experience.
-   - 200: Success with company details.
-   - 404: Company details not found.
-   - 400: Bad request.
+   - **200**: Success with company details when either valid company number or name are provided.
+   - **404**: Company details not found when either invalid company number or name are provided.
+   - **400**: Bad request when company number or company name are not provided or api key not provided.
+- **Flexi Response**: Based on header value both json or xml formats are supported for both consume and output.
+     
+![Company-Search_App-Flow](https://github.com/Ravi-Tej-Nasirao/spring-exercise/assets/136536200/ac3918a0-f8d5-45e8-bde3-6a9f8d8c15a8)
+
+
+
 
 ### 4. Good Coding Practices
 - **SOLID Principles**: The application is designed following SOLID principles to ensure maintainability, scalability, and testability.
@@ -219,6 +225,8 @@ The Company-Search-Service is a microservice application developed using Spring 
 - **Improved Performance**: Ehcache provides in-memory caching, reducing the need for frequent database queries and improving response times.
 - **Reduced Latency**: Cached data is readily available in memory, resulting in reduced latency and improved application performance.
 - **Cost-Effective Scalability**: Caching reduces the load on backend systems, enabling cost-effective scalability by reducing the need for additional infrastructure.
+
+### 7. Further considerations those can be considered
 
 ### Conclusion
 The Company-Search-Service microservice application leverages modern technologies like Spring Boot, MongoDB, Ehcache, and Docker to provide efficient and scalable search functionality for company details. By adhering to good coding practices and leveraging the advantages of NoSQL databases and caching mechanisms, the application ensures optimal performance and reliability for users.
