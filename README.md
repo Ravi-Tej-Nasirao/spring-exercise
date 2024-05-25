@@ -227,6 +227,11 @@ The Company-Search-Service is a microservice application developed using Spring 
 - **Cost-Effective Scalability**: Caching reduces the load on backend systems, enabling cost-effective scalability by reducing the need for additional infrastructure.
 
 ### 7. Further considerations those can be considered
-
+- **Vulnerability Check**: Check for OWASP vulnerabilities.
+- **Cache**: Redis cache or similar can be considered.
+- **Search Engine**: Search Engine like Elastic Search or Solr can be considered.
+- **Load Testing**: Using Jmeter or Gatling can be used.
+- **Dash Board Creation**: Using Micrometer, Graphana, New Relic or Splunk.
+  
 ### Conclusion
 The Company-Search-Service microservice application leverages modern technologies like Spring Boot, MongoDB, Ehcache, and Docker to provide efficient and scalable search functionality for company details. By adhering to good coding practices and leveraging the advantages of NoSQL databases and caching mechanisms, the application ensures optimal performance and reliability for users.
