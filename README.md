@@ -193,6 +193,7 @@ The Company-Search-Service is a microservice application developed using Spring 
 - **Model Mapper**: Used for mapping between DTOs (Data Transfer Objects) and entity objects.
 - **Docker**: Containerization platform for packaging the application and its dependencies into containers.
 - **Maven**: Build automation tool for managing dependencies and building the project.
+- **Mockito, WireMock**: Build unit test cases and mock api calls.
 
 ### 3. Functionality
 - **Search by Company Name or Number**: Users can search for company details using either the company name or number.
@@ -232,6 +233,30 @@ The Company-Search-Service is a microservice application developed using Spring 
 - **Search Engine**: Search Engine like Elastic Search or Solr can be considered.
 - **Load Testing**: Using Jmeter or Gatling can be used.
 - **Dash Board Creation**: Using Micrometer, Graphana, New Relic or Splunk.
+
+  ### 8. Sample Curl with json as content-type and accepted header
+
+  curl --location 'localhost:8080/api/search/company?activeOnly=true&isActiveCompanyOnly=true&isActiveOfficersOnly=true&isLatestDataRequired=true' \
+--header 'Accept: application/vnd.company.app-v1+json' \
+--header 'Content-Type: application/json' \
+--header 'x-api-key: PwewCEztSW7XlaAKqkg4IaOsPelGynw6SN9WsbNf' \
+--data '{
+    "companyName": "BBC LIMITED",
+    "companyNumber": "06500244"
+}'
+
+ ### 9. Sample Curl with xml as content-type and accepted header
+
+ curl --location 'localhost:8080/api/search/company?activeOnly=true&isActiveCompanyOnly=true&isActiveOfficersOnly=true&isLatestDataRequired=true' \
+--header 'Accept: application/vnd.company.app-v1+json' \
+--header 'Content-Type: application/xml' \
+--header 'x-api-key: PwewCEztSW7XlaAKqkg4IaOsPelGynw6SN9WsbNf' \
+--data '<CompanySearchRequest>
+     <companyName>BBC LIMITED</companyName>
+     <companyNumber>06500244</companyNumber>
+ </CompanySearchRequest>'
   
 ### Conclusion
 The Company-Search-Service microservice application leverages modern technologies like Spring Boot, MongoDB, Ehcache, and Docker to provide efficient and scalable search functionality for company details. By adhering to good coding practices and leveraging the advantages of NoSQL databases and caching mechanisms, the application ensures optimal performance and reliability for users.
+
+
