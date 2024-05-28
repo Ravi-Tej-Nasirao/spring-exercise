@@ -234,20 +234,20 @@ The Company-Search-Service is a microservice application developed using Spring 
 - **Load Testing**: Using Jmeter or Gatling can be used.
 - **Dash Board Creation**: Using Micrometer, Graphana, New Relic or Splunk.
 
-  ### 8. Sample Curl with json as content-type and accepted header
+### 8. Sample Curl with json as content-type and accepted header
 
-  curl --location 'localhost:8080/api/search/company?activeOnly=true&isActiveCompanyOnly=true&isActiveOfficersOnly=true&isLatestDataRequired=true' \
+curl --location 'localhost:8080/api/search/company?activeOnly=true&isActiveCompanyOnly=true&isActiveOfficersOnly=true&isLatestDataRequired=true' \
 --header 'Accept: application/vnd.company.app-v1+json' \
 --header 'Content-Type: application/json' \
 --header 'x-api-key: PwewCEztSW7XlaAKqkg4IaOsPelGynw6SN9WsbNf' \
 --data '{
-    "companyName": "BBC LIMITED",
-    "companyNumber": "06500244"
+"companyName": "BBC LIMITED",
+"companyNumber": "06500244"
 }'
 
  ### 9. Sample Curl with xml as content-type and accepted header
 
- curl --location 'localhost:8080/api/search/company?activeOnly=true&isActiveCompanyOnly=true&isActiveOfficersOnly=true&isLatestDataRequired=true' \
+curl --location 'localhost:8080/api/search/company?activeOnly=true&isActiveCompanyOnly=true&isActiveOfficersOnly=true&isLatestDataRequired=true' \
 --header 'Accept: application/vnd.company.app-v1+json' \
 --header 'Content-Type: application/xml' \
 --header 'x-api-key: PwewCEztSW7XlaAKqkg4IaOsPelGynw6SN9WsbNf' \
