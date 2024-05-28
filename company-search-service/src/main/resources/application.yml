@@ -10,6 +10,7 @@ spring:
     jcache:
       config: classpath:ehcache.xml
 
+
 server:
   port: 8080
   servlet:

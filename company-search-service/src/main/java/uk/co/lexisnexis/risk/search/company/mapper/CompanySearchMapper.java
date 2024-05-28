@@ -2,7 +2,6 @@ package uk.co.lexisnexis.risk.search.company.mapper;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Component;
 import uk.co.lexisnexis.risk.search.company.dto.Company;
 import uk.co.lexisnexis.risk.search.company.dto.CompanySearchRequest;
@@ -116,4 +115,9 @@ public class CompanySearchMapper {
                 uk.co.lexisnexis.risk.search.company.entity.Company.class);
     }
 
+    public uk.co.lexisnexis.risk.search.company.model.Company mapCompanyEntityToModel(uk.co.lexisnexis.risk.search.company.entity.Company company){
+        return modelMapper.map(
+                company.getCompanyDetails(),
+                uk.co.lexisnexis.risk.search.company.model.Company.class);
+    }
 }

@@ -9,7 +9,7 @@
 
     <cache alias="company">
         <key-type>java.lang.Object</key-type>
-        <value-type>uk.co.lexisnexis.risk.search.company.dto.CompanySearchResponse</value-type>
+        <value-type>uk.co.lexisnexis.risk.search.company.model.CompanySearchResponse</value-type>
         <expiry>
             <ttl unit="seconds">10000</ttl>
         </expiry>

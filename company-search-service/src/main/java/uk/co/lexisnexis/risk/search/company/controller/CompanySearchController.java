@@ -12,9 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uk.co.lexisnexis.risk.search.company.constants.CompanySearchConstants;
 import uk.co.lexisnexis.risk.search.company.dto.CompanySearchRequest;
-import uk.co.lexisnexis.risk.search.company.dto.CompanySearchResponse;
 import uk.co.lexisnexis.risk.search.company.exception.CompanySearchCustomException;
 import uk.co.lexisnexis.risk.search.company.exception.CompanySearchError;
+import uk.co.lexisnexis.risk.search.company.mapper.CompanySearchMapper;
 import uk.co.lexisnexis.risk.search.company.service.CompanySearchCacheService;
 import uk.co.lexisnexis.risk.search.company.service.CompanySearchService;
 
@@ -39,13 +39,16 @@ public class CompanySearchController {
     @Autowired
     private CompanySearchCacheService companySearchCacheService;
 
+    @Autowired
+    private CompanySearchMapper companySearchMapper;
+
     /**
      * search companies
      *
      * @param apiKey               the api key
      * @param isActiveCompanyOnly  the is active company only
      * @param isActiveOfficersOnly the is active officers only
-     * @param isLatestDataRequired the is latest data required
+     * @param isLatestDataRequired the is latest data or non cache or database data required
      * @param companySearchRequest the company search request
      * @return ResponseEntity<Object> search companies
      * @throws CompanySearchCustomException CompanySearchCustomException
@@ -65,7 +68,7 @@ public class CompanySearchController {
         log.info("Fetching the details for Company Name : {}, Company Number : {} ",
                 companySearchRequest.getCompanyName(), companySearchRequest.getCompanyNumber());
 
-        Optional<CompanySearchResponse> companySearchResponse;
+        Optional<uk.co.lexisnexis.risk.search.company.model.CompanySearchResponse> companySearchResponse;
         if(isLatestDataRequired){
             companySearchResponse = companySearchService.searchCompanies(apiKey, companySearchRequest, isActiveCompanyOnly, isActiveOfficersOnly, isLatestDataRequired);
         } else {
@@ -73,7 +76,8 @@ public class CompanySearchController {
         }
 
         if(companySearchResponse.isPresent()){
-            return new ResponseEntity<>(companySearchResponse.get(), HttpStatus.OK);
+            return new ResponseEntity<>(
+                    companySearchMapper.mapCompanySearchResponseModelToDto(companySearchResponse.get()), HttpStatus.OK);
         }
 
         CompanySearchError companyNotFoundResponse = new CompanySearchError();

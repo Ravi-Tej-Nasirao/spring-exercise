@@ -8,12 +8,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @Data
 @Builder(toBuilder = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class Officer {
+public class Officer implements Serializable {
+    private static final long serialVersionUID = 123L;
 
     private String name;
     private String officerRole;

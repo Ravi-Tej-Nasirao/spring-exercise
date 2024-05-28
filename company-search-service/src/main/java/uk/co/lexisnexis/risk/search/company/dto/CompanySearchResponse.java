@@ -17,6 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
+
 public class CompanySearchResponse  implements Serializable {
     private static final long serialVersionUID = 123L;
 

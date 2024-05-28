@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import uk.co.lexisnexis.risk.search.company.dto.CompanySearchResponse;
+import uk.co.lexisnexis.risk.search.company.model.CompanySearchResponse;
 import uk.co.lexisnexis.risk.search.company.entity.Company;
 import uk.co.lexisnexis.risk.search.company.mapper.CompanySearchMapper;
 import uk.co.lexisnexis.risk.search.company.repository.CompanyRepository;
@@ -14,6 +14,12 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+/**
+ * company search dal service
+ *
+ * @author ravin
+ * @date 2024/05/28
+ */
 @Service
 @Slf4j
 public class CompanySearchDalService {
@@ -24,12 +30,17 @@ public class CompanySearchDalService {
     @Autowired
     private CompanySearchMapper companySearchMapper;
 
+    /**
+     * save companies
+     *
+     * @param companySearchResponse the company search response
+     */
     @Async
     public void saveCompanies(Optional<CompanySearchResponse> companySearchResponse)  {
         if(companySearchResponse.isPresent()){
 
             List<String> companyNumbers = companySearchResponse.get().getItems()
-                    .stream().map(uk.co.lexisnexis.risk.search.company.dto.Company::getCompanyNumber).collect(Collectors.toList());
+                    .stream().map(uk.co.lexisnexis.risk.search.company.model.Company::getCompanyNumber).collect(Collectors.toList());
 
             List<Company> dbCompanies = companyRepository.findByCompanyNumberIn(companyNumbers);
 
@@ -42,7 +53,7 @@ public class CompanySearchDalService {
                             companyDetail = Company.builder().build();
                             companyDetail.setCreatedDateTime(Instant.now());
                         }
-                        companyDetail.setCompanyDetails(companySearchMapper.mapCompanyDtoToModel(company));
+                        companyDetail.setCompanyDetails(company);
                         companyDetail.setCompanyNumber(company.getCompanyNumber());
                         companyDetail.setCompanyName(company.getTitle());
                         companyDetail.setModifiedDateTime(Instant.now());

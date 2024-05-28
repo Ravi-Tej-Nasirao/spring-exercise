@@ -4,11 +4,13 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 @Data
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class OfficerResponse {
+public class OfficerResponse implements Serializable {
+    private static final long serialVersionUID = 123L;
 
     public String etag;
     public String kind;

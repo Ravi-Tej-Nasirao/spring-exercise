@@ -8,12 +8,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @Data
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 @Builder(toBuilder = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class Address {
+public class Address implements Serializable {
+    private static final long serialVersionUID = 123L;
 
     private String premises;
     private String locality;

@@ -54,12 +54,12 @@ public class CompanySearchServiceTest {
 
     @Test
     public void testSearchCompanies_withLatestData() throws CompanySearchCustomException {
-        CompanySearchResponse response = new CompanySearchResponse();
+        uk.co.lexisnexis.risk.search.company.model.CompanySearchResponse response = new uk.co.lexisnexis.risk.search.company.model.CompanySearchResponse();
         when(truProxyService.searchCompanies(anyString(), any(CompanySearchRequest.class), anyBoolean(), anyBoolean()))
                 .thenReturn(Optional.of(response));
         doNothing().when(companySearchDalService).saveCompanies(any(Optional.class));
 
-        Optional<CompanySearchResponse> result = companySearchService.searchCompanies("apiKey", companySearchRequest, true, true, true);
+        Optional<uk.co.lexisnexis.risk.search.company.model.CompanySearchResponse> result = companySearchService.searchCompanies("apiKey", companySearchRequest, true, true, true);
 
         assertTrue(result.isPresent());
         assertEquals(response, result.get());
@@ -75,7 +75,7 @@ public class CompanySearchServiceTest {
         when(companySearchMapper.mapCompanyModelToDto(any()))
                 .thenReturn(new uk.co.lexisnexis.risk.search.company.dto.Company());
         
-        Optional<CompanySearchResponse> result = companySearchService.searchCompanies("apiKey", companySearchRequest, true, true, false);
+        Optional<uk.co.lexisnexis.risk.search.company.model.CompanySearchResponse> result = companySearchService.searchCompanies("apiKey", companySearchRequest, true, true, false);
 
         assertTrue(result.isPresent());
         assertEquals(1, result.get().getTotalResults());

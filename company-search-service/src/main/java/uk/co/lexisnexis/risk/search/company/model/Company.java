@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Data
@@ -14,7 +15,8 @@ import java.util.List;
 @Builder(toBuilder = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class Company {
+public class Company implements Serializable {
+    private static final long serialVersionUID = 123L;
 
     private String companyNumber;
     private String companyType;

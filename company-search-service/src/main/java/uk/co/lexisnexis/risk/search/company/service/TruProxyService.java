@@ -50,7 +50,7 @@ public class TruProxyService {
      * @return Optional<CompanySearchResponse> search companies
      * @throws CompanySearchCustomException CompanySearchCustomException
      */
-    public Optional<uk.co.lexisnexis.risk.search.company.dto.CompanySearchResponse> searchCompanies(String apiKey,
+    public Optional<uk.co.lexisnexis.risk.search.company.model.CompanySearchResponse> searchCompanies(String apiKey,
                                                                                                     uk.co.lexisnexis.risk.search.company.dto.CompanySearchRequest companySearchRequest,
                                                                                                     boolean isActiveCompanyOnly, boolean isActiveOfficersOnly) throws CompanySearchCustomException {
 
@@ -59,7 +59,7 @@ public class TruProxyService {
         CompanySearchResponse companySearchResponse = getCompanyDetails(apiKey, companySearchRequestModel, isActiveCompanyOnly);
         companySearchResponse = populateOfficerDetails(apiKey, companySearchResponse, isActiveCompanyOnly, isActiveOfficersOnly);
 
-        return Objects.nonNull(companySearchResponse) ? Optional.of(companySearchMapper.mapCompanySearchResponseModelToDto(companySearchResponse)) : Optional.empty();
+        return Objects.nonNull(companySearchResponse) ? Optional.ofNullable(companySearchResponse) : Optional.empty();
     }
 
     /**
